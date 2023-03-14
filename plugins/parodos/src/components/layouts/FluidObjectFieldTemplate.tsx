@@ -14,9 +14,6 @@ import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    marginTop: theme.spacing(2),
-  },
-  item: {
     marginBottom: theme.spacing(2),
   },
   title: {
@@ -75,7 +72,7 @@ export function FluidObjectFieldTemplate<
       {isContainer ? (
         properties[0].content
       ) : (
-        <Grid container spacing={2} className={styles.item}>
+        <Grid container spacing={2} className={styles.container}>
           {properties.map((element, index) =>
             element.hidden ? (
               element.content
@@ -86,7 +83,6 @@ export function FluidObjectFieldTemplate<
                 md={6}
                 lg={4}
                 key={index}
-                style={{ marginBottom: '10px' }}
               >
                 {element.content}
               </Grid>
