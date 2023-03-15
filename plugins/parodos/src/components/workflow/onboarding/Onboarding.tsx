@@ -14,7 +14,10 @@ import {
 } from 'react-router-dom';
 import { ParodosPage } from '../../ParodosPage';
 import { Button, Chip, makeStyles, Typography } from '@material-ui/core';
-import { useWorkflowDefinitionToJsonSchema } from '../../../hooks/useWorkflowDefinitionToJsonSchema/useWorkflowDefinitionToJsonSchema';
+import {
+  jsonSchemaFromWorkflowDefinition,
+  // useWorkflowDefinitionToJsonSchema,
+} from '../../../hooks/useWorkflowDefinitionToJsonSchema/jsonSchemaFromWorkflowDefinition';
 import { assert } from 'assert-ts';
 import { Form } from '../../Form/Form';
 import { useGetWorkflowDefinition } from '../../../hooks/useGetWorkflowDefinitions';
@@ -26,6 +29,7 @@ import { type RJSFValidationError } from '@rjsf/utils';
 import * as urls from '../../../urls';
 import lodashGet from 'lodash.get';
 import { errorApiRef, useApi } from '@backstage/core-plugin-api';
+import { mockRecursiveWorksWorkflowDefinition } from '../../../mocks/workflowDefinitions/recursiveWorks';
 
 interface OnboardingProps {
   isNew: boolean;
@@ -54,13 +58,23 @@ export function Onboarding({ isNew }: OnboardingProps): JSX.Element {
 
   assert(!!workflowName, `no workflowId in Onboarding`);
 
-  const {
-    loading,
-    error,
-    value: formSchema,
-  } = useWorkflowDefinitionToJsonSchema(workflowName, 'byName');
+  // const {
+  //   loading,
+  //   error,
+  //   value: formSchema,
+  // } = useWorkflowDefinitionToJsonSchema(workflowName, 'byName');
+
+  const loading = false;
+  const error = undefined;
+
+  const formSchema = jsonSchemaFromWorkflowDefinition(
+    mockRecursiveWorksWorkflowDefinition,
+  );
 
   const { value: workflow } = useGetWorkflowDefinition(workflowName, 'byName');
+
+  console.log(workflow);
+  console.log(formSchema);
 
   const navigate = useNavigate();
 

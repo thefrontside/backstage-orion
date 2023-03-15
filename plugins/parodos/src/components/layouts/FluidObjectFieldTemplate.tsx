@@ -15,7 +15,7 @@ import { CSSProperties } from '@material-ui/core/styles/withStyles';
 const useStyles = makeStyles(theme => ({
   container: {
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(3),
+    marginBottom: theme.spacing(2),
   },
   item: {
     marginBottom: theme.spacing(2),
@@ -82,7 +82,7 @@ export function FluidObjectFieldTemplate<
       {isContainer ? (
         properties[0].content
       ) : (
-        <Grid container spacing={2} className={styles.container}>
+        <Grid container spacing={2}>
           {properties.map((element, index) => {
             const container =
               element.content.props.uiSchema['ui:hidden'] === true;
