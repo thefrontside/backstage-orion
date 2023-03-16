@@ -1,14 +1,12 @@
 import React from 'react';
 import '@patternfly/react-core/dist/styles/base.css';
 import { PipelineLayout } from './PipelineLayout';
-
 import { makeStyles } from '@material-ui/core';
 import { WorkFlowTask } from './type/WorkFlowTask';
+import cs from 'classnames';
 
 const useStyles = makeStyles(theme => ({
   pfRi__topologyDemo: {
-    width: '100%',
-    height: '35%',
     '& .pf-topology-visualization-surface__svg': {
       background: theme.palette.background.default,
     },
@@ -18,12 +16,13 @@ const useStyles = makeStyles(theme => ({
 type Props = {
   tasks: WorkFlowTask[];
   setSelectedTask: (selectedTask: string) => void;
+  className?: string;
 };
 
-export const WorkFlowStepper = (props: Props) => {
+export const WorkFlowStepper = ({className, ...props}: Props) => {
   const classes = useStyles();
   return (
-    <div className={classes.pfRi__topologyDemo}>
+    <div className={cs(className, classes.pfRi__topologyDemo)}>
       <PipelineLayout {...props} />
     </div>
   );
