@@ -124,9 +124,7 @@ export const WorkFlowDetail = () => {
         <Progress />
       )}
         <div className={styles.viewerContainer}>
-          {log !== '' && (
-            <WorkFlowLogViewer log={log} />
-          )}
+          {log !== '' && <WorkFlowLogViewer log={log} />}
         </div>
       </Box>
     </ParodosPage>
