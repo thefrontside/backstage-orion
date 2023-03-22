@@ -1,12 +1,7 @@
 import type { StateCreator } from 'zustand';
 import type { UISlice, StateMiddleware, State } from '../types';
 
-export const createUISlice: StateCreator<
-  State,
-  StateMiddleware,
-  [],
-  UISlice
-> = (set, get) => ({
+export const createUISlice: StateCreator<State, StateMiddleware, [], UISlice> = (set, get) => ({
   baseUrl: '',
   getApiUrl(url: string) {
     return `${get().baseUrl}${url}`;

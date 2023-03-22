@@ -19,10 +19,7 @@ export type GetDefinitionFilter = keyof typeof predicates;
 
 export interface WorkflowSlice {
   workflowDefinitions: WorkflowDefinition[];
-  getWorkDefinitionBy(
-    filterBy: GetDefinitionFilter,
-    value: string,
-  ): WorkflowDefinition | undefined;
+  getWorkDefinitionBy(filterBy: GetDefinitionFilter, value: string): WorkflowDefinition | undefined;
   fetchDefinitions(): Promise<void>;
   workflowLoading: boolean;
   workflowError: unknown | undefined;
@@ -37,9 +34,6 @@ export interface ProjectsSlice {
   projectsError: Error | undefined;
 }
 
-export type StateMiddleware = [
-  ['zustand/immer', never],
-  ['zustand/devtools', never],
-];
+export type StateMiddleware = [['zustand/immer', never], ['zustand/devtools', never]];
 
 export type State = UISlice & WorkflowSlice & ProjectsSlice;

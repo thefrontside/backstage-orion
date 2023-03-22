@@ -1,11 +1,6 @@
 import { z } from 'zod';
 
-const status = z.union([
-  z.literal('COMPLETED'),
-  z.literal('IN_PROGRESS'),
-  z.literal('PENDING'),
-  z.literal('FAILED'),
-]);
+const status = z.union([z.literal('COMPLETED'), z.literal('IN_PROGRESS'), z.literal('PENDING'), z.literal('FAILED')]);
 
 export const workflowTaskSchema = z.object({
   id: z.string(),
@@ -26,10 +21,9 @@ export type WorkStatus = z.infer<typeof baseWorkStatusSchema> & {
   works?: WorkStatus[];
 };
 
-export const workStatusSchema: z.ZodType<WorkStatus> =
-  baseWorkStatusSchema.extend({
-    works: z.lazy(() => workStatusSchema.array()).optional(),
-  });
+export const workStatusSchema: z.ZodType<WorkStatus> = baseWorkStatusSchema.extend({
+  works: z.lazy(() => workStatusSchema.array()).optional(),
+});
 
 export const workflowStatusSchema = z.object({
   workFlowExecutionId: z.string(),

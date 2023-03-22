@@ -90,13 +90,7 @@ function transformWorkToStep(work: WorkType): Step {
     'ui:hidden': true,
   };
 
-  for (const {
-    key,
-    type,
-    description,
-    optional,
-    options = [],
-  } of work.parameters ?? []) {
+  for (const { key, type, description, optional, options = [] } of work.parameters ?? []) {
     const propertiesPath = `properties.${work.name}.properties.${key}`;
     const required = !optional;
 
@@ -164,9 +158,7 @@ function transformWorkToStep(work: WorkType): Step {
   return { schema, uiSchema, title, mergedSchema: schema };
 }
 
-export function jsonSchemaFromWorkflowDefinition(
-  workflowDefinition: WorkflowDefinition,
-): FormSchema {
+export function jsonSchemaFromWorkflowDefinition(workflowDefinition: WorkflowDefinition): FormSchema {
   const result: FormSchema = {
     steps: [],
   };

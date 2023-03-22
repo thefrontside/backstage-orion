@@ -10,10 +10,7 @@ const parameterTypes = z.union([
   z.literal('URL'),
 ]);
 
-const processingType = z.union([
-  z.literal('SEQUENTIAL'),
-  z.literal('PARALLEL'),
-]);
+const processingType = z.union([z.literal('SEQUENTIAL'), z.literal('PARALLEL')]);
 
 export const workFlowTaskParameterTypeSchema = z.object({
   key: z.string(),
@@ -39,14 +36,7 @@ export const baseWorkSchema = z.object({
   processingType: processingType.optional(),
   author: z.string().optional().nullable(),
   outputs: z
-    .array(
-      z.union([
-        z.literal('EXCEPTION'),
-        z.literal('HTTP2XX'),
-        z.literal('NO_EXCEPTION'),
-        z.literal('OTHER'),
-      ]),
-    )
+    .array(z.union([z.literal('EXCEPTION'), z.literal('HTTP2XX'), z.literal('NO_EXCEPTION'), z.literal('OTHER')]))
     .optional(),
 });
 
@@ -72,8 +62,6 @@ export const workflowDefinitionSchema = z.object({
 
 export type WorkflowDefinition = z.infer<typeof workflowDefinitionSchema>;
 
-export type WorkFlowTaskParameter = z.infer<
-  typeof workFlowTaskParameterTypeSchema
->;
+export type WorkFlowTaskParameter = z.infer<typeof workFlowTaskParameterTypeSchema>;
 
 export type WorkFlowTaskParameterType = WorkFlowTaskParameter['type'];

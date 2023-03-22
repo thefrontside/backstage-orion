@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import {
-  ContentHeader,
-  InfoCard,
-  SupportButton,
-} from '@backstage/core-components';
+import { ContentHeader, InfoCard, SupportButton } from '@backstage/core-components';
 import { useEffect } from 'react';
 import { errorApiRef, useApi } from '@backstage/core-plugin-api';
 import { Form } from '../Form/Form';
@@ -14,16 +10,10 @@ import type { AssessmentStatusType } from '../types';
 import useAsyncFn from 'react-use/lib/useAsyncFn';
 import { IChangeEvent } from '@rjsf/core-v5';
 import * as urls from '../../urls';
-import {
-  displayableWorkflowOptions,
-  workflowSchema,
-} from '../../models/workflow';
+import { displayableWorkflowOptions, workflowSchema } from '../../models/workflow';
 import { type Project, projectSchema } from '../../models/project';
 import { ASSESSMENT_WORKFLOW } from './constants';
-import {
-  WorkflowOptionsList,
-  type WorkflowOptionsListItem,
-} from './WorkflowOptionsList';
+import { WorkflowOptionsList, type WorkflowOptionsListItem } from './WorkflowOptionsList';
 import { assert } from 'assert-ts';
 import { useStore } from '../../stores/workflowStore/workflowStore';
 
@@ -48,11 +38,8 @@ export function Workflow(): JSX.Element {
   const addProject = useStore(state => state.addProject);
 
   const [project, setProject] = useState<Project>();
-  const [assessmentStatus, setAssessmentStatus] =
-    useState<AssessmentStatusType>('none');
-  const [workflowOptions, setWorkflowOptions] = useState<
-    WorkflowOptionsListItem[]
-  >([]);
+  const [assessmentStatus, setAssessmentStatus] = useState<AssessmentStatusType>('none');
+  const [workflowOptions, setWorkflowOptions] = useState<WorkflowOptionsListItem[]>([]);
   const styles = useStyles();
 
   const formSchema = useGetProjectAssessmentSchema();
@@ -141,19 +128,13 @@ export function Workflow(): JSX.Element {
         <SupportButton title="Need help?">Lorem Ipsum</SupportButton>
       </ContentHeader>
       <Typography paragraph>
-        Select a project for an assessment of what additional workflows, if any,
-        it qualifies for.
+        Select a project for an assessment of what additional workflows, if any, it qualifies for.
       </Typography>
       {formSchema && (
         <InfoCard className={styles.fullHeight}>
           <Grid container direction="row" className={styles.form}>
             <Grid item xs={12} xl={8}>
-              <Form
-                formSchema={formSchema}
-                onSubmit={startAssessment}
-                disabled={disableForm}
-                hideTitle
-              >
+              <Form formSchema={formSchema} onSubmit={startAssessment} disabled={disableForm} hideTitle>
                 <Button
                   // We cannot submit button when in progress
                   type="submit"
@@ -167,10 +148,7 @@ export function Workflow(): JSX.Element {
             </Grid>
             <Grid item xs={12}>
               {assessmentStatus === 'complete' && project && (
-                <WorkflowOptionsList
-                  project={project}
-                  workflowOptions={workflowOptions}
-                />
+                <WorkflowOptionsList project={project} workflowOptions={workflowOptions} />
               )}
             </Grid>
           </Grid>

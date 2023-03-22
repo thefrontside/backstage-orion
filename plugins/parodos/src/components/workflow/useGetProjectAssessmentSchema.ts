@@ -5,9 +5,7 @@ import { WorkflowDefinition } from '../../models/workflowDefinitionSchema';
 import { useStore } from '../../stores/workflowStore/workflowStore';
 
 export function useGetProjectAssessmentSchema(): FormSchema {
-  const definition = useStore(state =>
-    state.getWorkDefinitionBy('byName', ASSESSMENT_WORKFLOW),
-  );
+  const definition = useStore(state => state.getWorkDefinitionBy('byName', ASSESSMENT_WORKFLOW));
 
   const cloned = JSON.parse(JSON.stringify(definition)) as WorkflowDefinition;
 

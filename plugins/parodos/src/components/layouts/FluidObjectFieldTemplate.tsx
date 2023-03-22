@@ -25,8 +25,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontSize: '1rem',
-    fontWeight: theme.typography
-      .fontWeightRegular as CSSProperties['fontWeight'],
+    fontWeight: theme.typography.fontWeightRegular as CSSProperties['fontWeight'],
   },
 }));
 
@@ -56,9 +55,7 @@ export function FluidObjectFieldTemplate<
     ButtonTemplates: { AddButton },
   } = registry.templates;
 
-  const isContainer =
-    properties.length === 1 &&
-    uiSchema?.[properties[0].content.key as string]['ui:hidden'] === true;
+  const isContainer = properties.length === 1 && uiSchema?.[properties[0].content.key as string]['ui:hidden'] === true;
 
   // TODO: reinstate when there is a task description
   const showTitle = false; // uiSchema?.['ui:show-title'];
@@ -81,8 +78,7 @@ export function FluidObjectFieldTemplate<
       ) : (
         <Grid container spacing={2} className={styles.container}>
           {properties.map((element, index) => {
-            const container =
-              element.content.props.uiSchema['ui:hidden'] === true;
+            const container = element.content.props.uiSchema['ui:hidden'] === true;
 
             if (container) {
               return (
@@ -97,14 +93,7 @@ export function FluidObjectFieldTemplate<
             return element.hidden ? (
               element.content
             ) : (
-              <Grid
-                item
-                xs={12}
-                md={6}
-                lg={4}
-                key={index}
-                className={styles.item}
-              >
+              <Grid item xs={12} md={6} lg={4} key={index} className={styles.item}>
                 {element.content}
               </Grid>
             );

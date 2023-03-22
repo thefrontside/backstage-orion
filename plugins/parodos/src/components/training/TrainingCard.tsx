@@ -38,9 +38,7 @@ export const TrainingCard = ({ training }: Props) => {
               <Typography variant="body2" style={{ whiteSpace: 'normal' }}>
                 {key === 'course'
                   ? `${fields.course} - ${training.course.title}`
-                  : `${fields[key as keyof Training]} - ${
-                      training[key as keyof Training]
-                    }`}
+                  : `${fields[key as keyof Training]} - ${training[key as keyof Training]}`}
               </Typography>
 
               {key === 'course' ? (
@@ -57,10 +55,7 @@ export const TrainingCard = ({ training }: Props) => {
       <Grid item>
         <Card style={{ maxWidth: 500 }}>
           <CardMedia>
-            <ItemCardHeader
-              title={training.course.title}
-              subtitle="Course Recommendation"
-            />
+            <ItemCardHeader title={training.course.title} subtitle="Course Recommendation" />
           </CardMedia>
           <CardContent>{training.course.description}</CardContent>
           <CardActions>

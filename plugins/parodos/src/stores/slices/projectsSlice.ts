@@ -3,12 +3,7 @@ import type { ProjectsSlice, State, StateMiddleware } from '../types';
 import * as urls from '../../urls';
 import { unstable_batchedUpdates } from 'react-dom';
 
-export const createProjectsSlice: StateCreator<
-  State,
-  StateMiddleware,
-  [],
-  ProjectsSlice
-> = (set, get) => ({
+export const createProjectsSlice: StateCreator<State, StateMiddleware, [], ProjectsSlice> = (set, get) => ({
   projectsLoading: false,
   projectsError: undefined,
   hasProjects() {

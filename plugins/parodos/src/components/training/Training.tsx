@@ -12,9 +12,7 @@ export const Training = () => {
       <ContentHeader title="Training">
         <SupportButton title="Need help?">Lorem Ipsum</SupportButton>
       </ContentHeader>
-      <Typography paragraph>
-        Performance-based training recommendations
-      </Typography>
+      <Typography paragraph>Performance-based training recommendations</Typography>
       <Tabs
         tabs={[
           {

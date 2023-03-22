@@ -20,12 +20,9 @@ export const EmptyProjectsState = () => {
   return (
     <Box className={styles.spacing}>
       <ProjectIcon style={{ fontSize: '6rem' }} />
-      <Typography variant="h6">
-        You don&apos;t have any projects on here yet!
-      </Typography>
+      <Typography variant="h6">You don&apos;t have any projects on here yet!</Typography>
       <Typography paragraph>
-        To start using Parodos, you&apos;ll first need to initiate a project
-        assessment.
+        To start using Parodos, you&apos;ll first need to initiate a project assessment.
       </Typography>
       <Typography paragraph>
         <Link to="/parodos/workflow">GET STARTED</Link>

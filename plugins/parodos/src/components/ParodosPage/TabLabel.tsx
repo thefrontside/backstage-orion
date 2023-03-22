@@ -17,12 +17,7 @@ export interface TabLabelProps {
   children: ReactNode;
 }
 
-export function TabLabel({
-  children,
-  icon,
-  highlighted,
-  ...props
-}: TabLabelProps) {
+export function TabLabel({ children, icon, highlighted, ...props }: TabLabelProps) {
   const styles = useStyles();
 
   return (

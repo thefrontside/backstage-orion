@@ -19,9 +19,7 @@ export const ParodosPage: FC<ParodosPageProps> = ({ children, ...props }) => {
   const selectedTab = useMemo(
     () =>
       Math.max(
-        navigationMap.findIndex(({ routes }) =>
-          routes.find(route => pathname.includes(route)),
-        ),
+        navigationMap.findIndex(({ routes }) => routes.find(route => pathname.includes(route))),
         0,
       ),
     [pathname],
@@ -41,11 +39,7 @@ export const ParodosPage: FC<ParodosPageProps> = ({ children, ...props }) => {
           label,
           tabProps: {
             component: (p: TabLabelProps) => (
-              <TabLabel
-                {...p}
-                highlighted={highlighted}
-                icon={navigationMap[index].icon}
-              />
+              <TabLabel {...p} highlighted={highlighted} icon={navigationMap[index].icon} />
             ),
           },
         };
@@ -64,11 +58,7 @@ export const ParodosPage: FC<ParodosPageProps> = ({ children, ...props }) => {
   return (
     <Page themeId="tool">
       <PageHeader />
-      <HeaderTabs
-        selectedIndex={selectedTab}
-        onChange={onChangeTab}
-        tabs={tabs}
-      />
+      <HeaderTabs selectedIndex={selectedTab} onChange={onChangeTab} tabs={tabs} />
       <Content {...props}>
         {error && <ErrorMessage error={error as Error} />}
         {children}

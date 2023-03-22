@@ -8,8 +8,7 @@ export const mockTrainings: Training[] = [
     trigger: 'Assignment Trigger - Test coverage below 50%',
     initialEventPoints: 'Initial Event Point - 34%',
     course: {
-      title:
-        'Course Recommendation - 10 Easy Steps to Improve Your Test Coverage',
+      title: 'Course Recommendation - 10 Easy Steps to Improve Your Test Coverage',
       creator: 'JohnDoe',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -24,8 +23,7 @@ export const mockTrainings: Training[] = [
     trigger: 'Assignment Trigger - Test coverage below 50%',
     initialEventPoints: 'Initial Event Point - 34%',
     course: {
-      title:
-        'Course Recommendation - 10 Easy Steps to Improve Your Test Coverage',
+      title: 'Course Recommendation - 10 Easy Steps to Improve Your Test Coverage',
       creator: 'JohnDoe',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -40,8 +38,7 @@ export const mockTrainings: Training[] = [
     trigger: 'Assignment Trigger - Test coverage below 50%',
     initialEventPoints: 'Initial Event Point - 34%',
     course: {
-      title:
-        'Course Recommendation - 10 Easy Steps to Improve Your Test Coverage',
+      title: 'Course Recommendation - 10 Easy Steps to Improve Your Test Coverage',
       creator: 'JohnDoe',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',

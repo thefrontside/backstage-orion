@@ -9,10 +9,7 @@ interface DemoTaskEdgeProps {
 }
 
 const DemoTaskGroupEdge: React.FunctionComponent<DemoTaskEdgeProps> = props => (
-  <TaskEdge
-    nodeSeparation={GROUPED_PIPELINE_NODE_SEPARATION_HORIZONTAL}
-    {...props}
-  />
+  <TaskEdge nodeSeparation={GROUPED_PIPELINE_NODE_SEPARATION_HORIZONTAL} {...props} />
 );
 
 export default observer(DemoTaskGroupEdge);

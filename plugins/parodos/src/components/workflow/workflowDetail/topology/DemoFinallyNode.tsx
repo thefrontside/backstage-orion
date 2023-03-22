@@ -18,26 +18,14 @@ type DemoFinallyNodeProps = {
 } & WithContextMenuProps &
   WithSelectionProps;
 
-const DemoFinallyNode: React.FunctionComponent<DemoFinallyNodeProps> = ({
-  ...props
-}) => {
+const DemoFinallyNode: React.FunctionComponent<DemoFinallyNodeProps> = ({ ...props }) => {
   const [hover, hoverRef] = useHover<any>();
   const detailsLevel = useDetailsLevel();
 
   return (
-    <Layer
-      id={
-        detailsLevel !== ScaleDetailsLevel.high && hover
-          ? TOP_LAYER
-          : DEFAULT_LAYER
-      }
-    >
+    <Layer id={detailsLevel !== ScaleDetailsLevel.high && hover ? TOP_LAYER : DEFAULT_LAYER}>
       <g ref={hoverRef}>
-        <FinallyNode
-          scaleNode={hover && detailsLevel !== ScaleDetailsLevel.high}
-          hideDetailsAtMedium
-          {...props}
-        />
+        <FinallyNode scaleNode={hover && detailsLevel !== ScaleDetailsLevel.high} hideDetailsAtMedium {...props} />
       </g>
     </Layer>
   );

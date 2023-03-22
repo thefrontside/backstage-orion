@@ -1,17 +1,7 @@
 /* eslint-disable no-console */
 import React, { useEffect } from 'react';
-import {
-  ContentHeader,
-  InfoCard,
-  Progress,
-  SupportButton,
-} from '@backstage/core-components';
-import {
-  Link,
-  useNavigate,
-  useParams,
-  useSearchParams,
-} from 'react-router-dom';
+import { ContentHeader, InfoCard, Progress, SupportButton } from '@backstage/core-components';
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { ParodosPage } from '../../ParodosPage';
 import { Button, Chip, makeStyles, Typography } from '@material-ui/core';
 import { useWorkflowDefinitionToJsonSchema } from '../../../hooks/useWorkflowDefinitionToJsonSchema/useWorkflowDefinitionToJsonSchema';
@@ -49,9 +39,7 @@ export function Onboarding({ isNew }: OnboardingProps): JSX.Element {
 
   assert(!!workflowName, `no workflowId in Onboarding`);
 
-  const workflow = useStore(state =>
-    state.getWorkDefinitionBy('byName', workflowName),
-  );
+  const workflow = useStore(state => state.getWorkDefinitionBy('byName', workflowName));
 
   const styles = useStyles();
   const [searchParams] = useSearchParams();
@@ -65,10 +53,7 @@ export function Onboarding({ isNew }: OnboardingProps): JSX.Element {
 
   const navigate = useNavigate();
 
-  const [
-    { error: startWorkflowError, loading: startWorkflowLoading },
-    startWorkflow,
-  ] = useAsyncFn(
+  const [{ error: startWorkflowError, loading: startWorkflowLoading }, startWorkflow] = useAsyncFn(
     async ({ formData }: IChangeEvent) => {
       assert(!!workflow);
       assert(!!projectId);
@@ -80,11 +65,7 @@ export function Onboarding({ isNew }: OnboardingProps): JSX.Element {
           return {
             name: work.name,
             arguments: work.parameters?.map(param => {
-              const value = lodashGet(
-                formData,
-                `${work.name}.${param.key}`,
-                null,
-              );
+              const value = lodashGet(formData, `${work.name}.${param.key}`, null);
 
               return {
                 key: param.key,
@@ -133,18 +114,14 @@ export function Onboarding({ isNew }: OnboardingProps): JSX.Element {
       {startWorkflowLoading && <Progress />}
       {formSchema.steps.length > 0 && (
         <InfoCard>
-          <Typography paragraph>
-            Please provide additional information related to your project.
-          </Typography>
+          <Typography paragraph>Please provide additional information related to your project.</Typography>
           <Form
             formSchema={formSchema}
             onSubmit={startWorkflow}
             disabled={startWorkflowLoading}
             transformErrors={(errors: RJSFValidationError[]) => {
               return errors.map(err =>
-                err?.message?.includes('must match pattern')
-                  ? { ...err, message: 'invalid url' }
-                  : err,
+                err?.message?.includes('must match pattern') ? { ...err, message: 'invalid url' } : err,
               );
             }}
           >

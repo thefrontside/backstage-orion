@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  AssessmentIcon,
-  DeployIcon,
-  NotificationIcon,
-  ProjectsIcon,
-  TrainingIcon,
-  MetricsIcon,
-} from '../icons';
+import { AssessmentIcon, DeployIcon, NotificationIcon, ProjectsIcon, TrainingIcon, MetricsIcon } from '../icons';
 
 export const pluginRoutePrefix = '/parodos';
 

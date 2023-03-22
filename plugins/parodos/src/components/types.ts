@@ -83,9 +83,7 @@ export type WorkflowExecuteResponseType = {
   };
 };
 
-export type PropsFromComponent<C> = C extends (props: infer P) => JSX.Element
-  ? P
-  : never;
+export type PropsFromComponent<C> = C extends (props: infer P) => JSX.Element ? P : never;
 
 export interface Step {
   uiSchema: UiSchema;

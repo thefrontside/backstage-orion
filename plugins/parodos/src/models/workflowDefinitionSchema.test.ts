@@ -4,9 +4,7 @@ import { workflowDefinitionSchema } from './workflowDefinitionSchema';
 
 describe('WorkflowDefinitionSchema', () => {
   it('parses the API workflow definitions', () => {
-    const result = workflowDefinitionSchema.safeParse(
-      mockRecursiveWorksWorkflowDefinition,
-    );
+    const result = workflowDefinitionSchema.safeParse(mockRecursiveWorksWorkflowDefinition);
 
     expect(result.success).toBe(true);
 

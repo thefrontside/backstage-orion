@@ -20,12 +20,7 @@ type DemoTaskNodeProps = {
 } & WithContextMenuProps &
   WithSelectionProps;
 
-const DemoTaskNode: any = ({
-  element,
-  onContextMenu,
-  contextMenuOpen,
-  ...rest
-}: DemoTaskNodeProps) => {
+const DemoTaskNode: any = ({ element, onContextMenu, contextMenuOpen, ...rest }: DemoTaskNodeProps) => {
   const data = element.getData();
   const [hover, hoverRef] = useHover();
   const detailsLevel = useDetailsLevel();
@@ -45,22 +40,12 @@ const DemoTaskNode: any = ({
     <WhenDecorator
       element={element}
       status={data.whenStatus}
-      leftOffset={
-        hasTaskIcon
-          ? DEFAULT_WHEN_OFFSET + (element.getBounds().height - 4) * 0.85
-          : DEFAULT_WHEN_OFFSET
-      }
+      leftOffset={hasTaskIcon ? DEFAULT_WHEN_OFFSET + (element.getBounds().height - 4) * 0.85 : DEFAULT_WHEN_OFFSET}
     />
   ) : null;
 
   return (
-    <Layer
-      id={
-        detailsLevel !== ScaleDetailsLevel.high && hover
-          ? TOP_LAYER
-          : DEFAULT_LAYER
-      }
-    >
+    <Layer id={detailsLevel !== ScaleDetailsLevel.high && hover ? TOP_LAYER : DEFAULT_LAYER}>
       <TaskNode
         ref={hoverRef}
         element={element}

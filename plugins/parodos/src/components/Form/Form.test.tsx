@@ -12,13 +12,10 @@ describe('<Form />', () => {
       ...mockAndromedaWorkflowDefinition,
       works: [mockAndromedaWorkflowDefinition.works[0]],
     };
-    const formSchema: FormSchema =
-      jsonSchemaFromWorkflowDefinition(mockWorkflow);
+    const formSchema: FormSchema = jsonSchemaFromWorkflowDefinition(mockWorkflow);
 
     it('renders a basic dynamic form', () => {
-      const { getByRole } = render(
-        <Form formSchema={formSchema} onSubmit={jest.fn()} />,
-      );
+      const { getByRole } = render(<Form formSchema={formSchema} onSubmit={jest.fn()} />);
 
       expect(getByRole('textbox', { name: 'api-server' })).toBeInTheDocument();
     });
@@ -26,9 +23,7 @@ describe('<Form />', () => {
     it('can submit the form', async () => {
       const onSubmit = jest.fn();
 
-      const { getByRole } = render(
-        <Form formSchema={formSchema} onSubmit={onSubmit} />,
-      );
+      const { getByRole } = render(<Form formSchema={formSchema} onSubmit={onSubmit} />);
 
       await fireEvent.change(getByRole('textbox', { name: 'api-server' }), {
         target: { value: 'https://someurl.com' },
@@ -43,14 +38,10 @@ describe('<Form />', () => {
   });
 
   describe('with stepper', () => {
-    const formSchema: FormSchema = jsonSchemaFromWorkflowDefinition(
-      mockAndromedaWorkflowDefinition,
-    );
+    const formSchema: FormSchema = jsonSchemaFromWorkflowDefinition(mockAndromedaWorkflowDefinition);
 
     it('renders a stepper with more than one task', () => {
-      const { getByRole } = render(
-        <Form formSchema={formSchema} onSubmit={jest.fn()} />,
-      );
+      const { getByRole } = render(<Form formSchema={formSchema} onSubmit={jest.fn()} />);
 
       expect(getByRole('textbox', { name: 'api-server' })).toBeInTheDocument();
 
@@ -61,9 +52,7 @@ describe('<Form />', () => {
     it('can submit the multi-step form', async () => {
       const onSubmit = jest.fn();
 
-      const { getByRole, getByText } = render(
-        <Form formSchema={formSchema} onSubmit={onSubmit} />,
-      );
+      const { getByRole, getByText } = render(<Form formSchema={formSchema} onSubmit={onSubmit} />);
 
       expect(getByText('Ad Group Work Flow Task')).toBeInTheDocument();
 

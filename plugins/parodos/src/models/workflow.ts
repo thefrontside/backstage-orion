@@ -25,10 +25,7 @@ export type Workflow = z.infer<typeof workflowSchema>;
 
 export type WorkflowOptionItem = z.infer<typeof workflowOptionItem>;
 
-export type DisplayableOptions = Exclude<
-  keyof Workflow['workFlowOptions'],
-  'optionsAvailable' | 'currentVersion'
->;
+export type DisplayableOptions = Exclude<keyof Workflow['workFlowOptions'], 'optionsAvailable' | 'currentVersion'>;
 
 export const displayableWorkflowOptions: readonly DisplayableOptions[] = [
   'newOptions',

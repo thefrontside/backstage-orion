@@ -1,9 +1,6 @@
 import { z } from 'zod';
 
-const projectStatus = z.union([
-  z.literal('in-progress'),
-  z.literal('on-boarded'),
-]);
+const projectStatus = z.union([z.literal('in-progress'), z.literal('on-boarded')]);
 
 export const projectSchema = z.object({
   id: z.string(),

@@ -1,26 +1,13 @@
 import React, { useState, useCallback, type ReactNode } from 'react';
 import validator from '@rjsf/validator-ajv8';
 import { Form as JsonForm } from './RJSF';
-import {
-  type FormProps as JsonFormProps,
-  type IChangeEvent,
-} from '@rjsf/core-v5';
+import { type FormProps as JsonFormProps, type IChangeEvent } from '@rjsf/core-v5';
 import type { FormSchema } from '../types';
 import { JsonValue } from '@backstage/types';
-import {
-  Step,
-  StepContent,
-  StepLabel,
-  Stepper,
-  Button,
-  makeStyles,
-} from '@material-ui/core';
+import { Step, StepContent, StepLabel, Stepper, Button, makeStyles } from '@material-ui/core';
 import { FluidObjectFieldTemplate } from '../layouts/FluidObjectFieldTemplate';
 
-type FormProps = Pick<
-  JsonFormProps,
-  'disabled' | 'onChange' | 'className' | 'transformErrors'
-> &
+type FormProps = Pick<JsonFormProps, 'disabled' | 'onChange' | 'className' | 'transformErrors'> &
   Required<Pick<JsonFormProps, 'onSubmit'>> & {
     formSchema: FormSchema;
     title?: string;
@@ -115,19 +102,10 @@ export function Form({
         children
       ) : (
         <div>
-          <Button
-            disabled={activeStep === 0}
-            className={styles.previous}
-            onClick={handleBack}
-          >
+          <Button disabled={activeStep === 0} className={styles.previous} onClick={handleBack}>
             PREVIOUS
           </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            className={styles.next}
-          >
+          <Button variant="contained" color="primary" type="submit" className={styles.next}>
             NEXT
           </Button>
         </div>
@@ -144,9 +122,7 @@ export function Form({
       <Stepper activeStep={activeStep} orientation="vertical">
         {formSchema.steps.map((step, index) => (
           <Step key={index}>
-            {hideTitle === false && (
-              <StepLabel className={styles.stepLabel}>{step.title}</StepLabel>
-            )}
+            {hideTitle === false && <StepLabel className={styles.stepLabel}>{step.title}</StepLabel>}
             <StepContent key={index}>{TheForm}</StepContent>
           </Step>
         ))}

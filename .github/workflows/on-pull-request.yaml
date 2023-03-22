@@ -27,9 +27,6 @@ jobs:
       - name: Linter
         run: yarn lint:all
 
-      - name: Prettier
-        run: yarn prettier:check
-
       - name: Unit tests
         run: yarn test:all
 

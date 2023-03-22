@@ -6,9 +6,7 @@ import { mockDeepRecursiveWorks } from '../../mocks/workflowDefinitions/deepRecu
 
 describe('jsonSchemaFromWorkflowDefinition', () => {
   it('transforms a workflow definition with recursive works', () => {
-    const result = jsonSchemaFromWorkflowDefinition(
-      mockRecursiveWorksWorkflowDefinition,
-    );
+    const result = jsonSchemaFromWorkflowDefinition(mockRecursiveWorksWorkflowDefinition);
 
     expect(result.steps.length).toBeGreaterThan(0);
 
@@ -18,10 +16,7 @@ describe('jsonSchemaFromWorkflowDefinition', () => {
       [],
     ) as WorkType[];
 
-    const childUiSchemaWorks = get(
-      result.steps[0].uiSchema,
-      'subWorkFlowOne.works.items',
-    );
+    const childUiSchemaWorks = get(result.steps[0].uiSchema, 'subWorkFlowOne.works.items');
 
     expect(childSchemaWorks).toHaveLength(2);
     expect(childUiSchemaWorks).toHaveLength(2);
@@ -37,10 +32,7 @@ describe('jsonSchemaFromWorkflowDefinition', () => {
 
     expect(comment).toBe('comment');
 
-    const singleSignOn = get(
-      result.steps[2]?.schema,
-      'properties.subWorkFlowFour.properties.works.items[1].title',
-    );
+    const singleSignOn = get(result.steps[2]?.schema, 'properties.subWorkFlowFour.properties.works.items[1].title');
 
     expect(singleSignOn).toBe('Single Sign On Work Flow Task');
   });

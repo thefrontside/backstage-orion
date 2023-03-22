@@ -1,9 +1,5 @@
 import { ParodosPage } from '../../ParodosPage';
-import {
-  ContentHeader,
-  Progress,
-  SupportButton,
-} from '@backstage/core-components';
+import { ContentHeader, Progress, SupportButton } from '@backstage/core-components';
 import { Box, Chip, makeStyles, Typography } from '@material-ui/core';
 import { WorkFlowLogViewer } from './WorkFlowLogViewer';
 import React, { useEffect, useState } from 'react';
@@ -11,11 +7,7 @@ import { WorkFlowStepper } from './topology/WorkFlowStepper';
 import { useLocation, useParams } from 'react-router-dom';
 import { mockLog } from './topology/mock/mockLog';
 import * as urls from '../../../urls';
-import {
-  WorkflowStatus,
-  WorkflowTask,
-  WorkStatus,
-} from '../../../models/workflowTaskSchema';
+import { WorkflowStatus, WorkflowTask, WorkStatus } from '../../../models/workflowTaskSchema';
 import { useStore } from '../../../stores/workflowStore/workflowStore';
 
 const useStyles = makeStyles(_theme => ({
@@ -112,29 +104,15 @@ export const WorkFlowDetail = () => {
 
   return (
     <ParodosPage className={styles.container}>
-      {isNew && (
-        <Chip
-          className={styles.badge}
-          label="New application"
-          color="secondary"
-        />
-      )}
+      {isNew && <Chip className={styles.badge} label="New application" color="secondary" />}
       <ContentHeader title="Onboarding">
         <SupportButton title="Need help?">Lorem Ipsum</SupportButton>
       </ContentHeader>
-      <Typography paragraph>
-        You are onboarding: org-name/new-project. Execution Id is {executionId}
-      </Typography>
+      <Typography paragraph>You are onboarding: org-name/new-project. Execution Id is {executionId}</Typography>
 
       <Box className={styles.detailContainer}>
-        {allTasks.length > 0 ? (
-          <WorkFlowStepper tasks={allTasks} setSelectedTask={setSelectedTask} />
-        ) : (
-          <Progress />
-        )}
-        <div className={styles.viewerContainer}>
-          {log !== '' && <WorkFlowLogViewer log={log} />}
-        </div>
+        {allTasks.length > 0 ? <WorkFlowStepper tasks={allTasks} setSelectedTask={setSelectedTask} /> : <Progress />}
+        <div className={styles.viewerContainer}>{log !== '' && <WorkFlowLogViewer log={log} />}</div>
       </Box>
     </ParodosPage>
   );
